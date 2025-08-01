@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function formatAIResponse(text) {
-        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-        text = text.replace(/^\d+\.\s+(.*)/gm, '<li>$1</li>');
+        text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1<\/strong>');
+        text = text.replace(/^\d+\.\s+(.*)/gm, '<li>$1<\/li>');
         text = text.replace(/(<li>.*<\/li>)/s, '<ol>$1<\/ol>');
-        text = text.replace(/^\*\s+(.*)/gm, '<li>$1</li>');
+        text = text.replace(/^\*\s+(.*)/gm, '<li>$1<\/li>');
         text = text.replace(/(<li>.*<\/li>)/s, '<ul>$1<\/ul>');
         return text;
     }
@@ -167,7 +167,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function formatMetrics(metrics) {
         let formatted = '\n';
         for (const [key, value] of Object.entries(metrics)) {
-            formatted += `<strong>${key}:</strong> ${JSON.stringify(value, null, 2)}\n`;
+            if (typeof value === 'object' && value !== null) {
+                formatted += `<strong>${key}:<\/strong>\n`;
+                for (const [subKey, subValue] of Object.entries(value)) {
+                    formatted += `  ${subKey}: ${subValue}\n`;
+                }
+            } else {
+                formatted += `<strong>${key}:<\/strong> ${value}\n`;
+            }
         }
         return formatted;
     }
@@ -234,13 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 output += formatMetrics(result.metrics);
             }
             if (result.result) {
-                output += `\n<strong>Result:</strong> ${JSON.stringify(result.result, null, 2)}`;
+                output += `\n<strong>Result:<\/strong> ${JSON.stringify(result.result, null, 2)}`;
             }
             trainOutput.innerHTML = output;
         } catch (error) {
             trainOutput.textContent = `Error: ${error.message}`;
-        } finally {
-            loader.style.display = 'none';
         }
     });
 

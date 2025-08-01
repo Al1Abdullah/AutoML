@@ -6,10 +6,7 @@ seaborn
 plotly
 xgboost
 catboost
-langgraph
 python-dotenv
-faiss-cpu
-tiktoken
 groq
 flask
 scipy

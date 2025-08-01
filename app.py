@@ -18,6 +18,7 @@ import re
 import matplotlib.pyplot as plt
 import io
 import base64
+import numpy as np
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -71,6 +72,7 @@ def get_learning_type():
         logging.warning("No dataset uploaded when requesting learning type.")
         return jsonify({"error": "No dataset uploaded yet."}), 400
 
+    dtypes_str = df.dtypes.to_string()
     prompt = (
         "You are an expert data scientist. Your task is to analyze a dataset and determine its learning type (supervised or unsupervised). "
         "If it's a supervised learning problem, you MUST identify the single target column that the other columns would predict. "
