@@ -9,7 +9,7 @@ This project is a comprehensive Automated Machine Learning (AutoML) platform des
 *   **Automated Data Cleaning:** Utilities to preprocess and clean raw datasets, ensuring data quality for model training.
 *   **Supervised Learning Models:** Implementation and integration of various supervised machine learning algorithms.
 *   **Unsupervised Learning Models:** Support for unsupervised learning techniques for tasks like clustering and dimensionality reduction.
-*   **AI SQL Assistant:** A Retrieval Augmented Generation (RAG) based AI assistant to help with SQL queries and database interactions.
+*   **AI SQL Assistant (Agentic Capability):** A Retrieval Augmented Generation (RAG) based AI assistant to help with SQL queries and database interactions. This component demonstrates agentic capabilities by intelligently processing natural language queries, retrieving relevant information, and generating actionable SQL.
 *   **Interactive Web Frontend:** A user-friendly web interface built with HTML, CSS, and JavaScript for interacting with the AutoML functionalities and visualizing results.
 *   **Data Visualization:** Tools to generate insightful charts and graphs from processed data and model outputs.
 
@@ -19,6 +19,7 @@ The project is organized into the following main directories:
 
 *   `.env`: Environment variables, including API keys.
 *   `app.py`: The main application entry point.
+
 *   `config.py`: Configuration settings for the application.
 *   `frontend/`: Contains the static files for the web-based user interface (HTML, CSS, JavaScript, images).
 *   `models/`: Houses the implementations for supervised and unsupervised machine learning models.
@@ -81,6 +82,10 @@ To run the AutoML application:
 *   **Git:** Version control.
 *   **Groq API:** For AI-powered functionalities (e.g., SQL assistant).
 *   **CatBoost:** (Implied by `catboost_info`) A machine learning library.
+
+## Future Enhancements (Autonomous System Potential)
+
+The architecture of this project, particularly the RAG-based AI SQL Assistant, lays the groundwork for developing more autonomous capabilities. Future enhancements could involve integrating more complex decision-making processes, self-correction mechanisms, and broader task automation, moving towards a more fully autonomous AutoML system.
 
 ## Contributing
 
