@@ -72,12 +72,11 @@ To run the AutoML application:
     ```bash
     python app.py
     ```
-    This will start the Gradio application, and you can access the frontend through the URL provided in your terminal (usually `http://127.0.0.1:7860` or similar).
+    (Further instructions on how to access the web frontend would depend on how `app.py` serves it. If it's a Flask/Django app, it would typically mention a local server address.)
 
 ## Technologies Used
 
 *   **Python:** Core programming language.
-*   **Gradio:** For building the interactive web interface.
 *   **HTML, CSS, JavaScript:** For the frontend development.
 *   **Git:** Version control.
 *   **Groq API:** For AI-powered functionalities (e.g., SQL assistant).
