@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoML Companion</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>AutoML</h2>
+                <button id="sidebar-toggle"><i class="fas fa-angle-left"></i></button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active" data-page="load-dataset"><i class="fas fa-upload"></i><span class="nav-text">Load Dataset</span></a>
+                <a href="#" class="nav-link" data-page="train"><i class="fas fa-cogs"></i><span class="nav-text">Model Trainer</span></a>
+                <a href="#" class="nav-link" data-page="visualize"><i class="fas fa-chart-bar"></i><span class="nav-text">Visualize</span></a>
+                <a href="#" class="nav-link" data-page="ask"><i class="fas fa-question-circle"></i><span class="nav-text">Ask AI</span></a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <div class="container">
+                <div id="load-dataset" class="page active">
+                    <div class="card">
+                        <h2><i class="fas fa-upload"></i> Load Dataset</h2>
+                        <p>Upload a CSV file to begin your analysis.</p>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="csv-upload" accept=".csv">
+                            <label for="csv-upload">Choose a file</label>
+                        </div>
+                        <div id="upload-status"></div>
+                        <label for="column-list">Available Columns:</label>
+                        <select id="column-list" multiple></select>
+                    </div>
+                </div>
+                <div id="train" class="page">
+                    <div class="card">
+                        <h2><i class="fas fa-cogs"></i> Model Trainer</h2>
+                        <p>Choose a learning type and model to train on your data.</p>
+                        <select id="learning-type" disabled>
+                            <option value="Supervised">Supervised</option>
+                            <option value="Unsupervised">Unsupervised</option>
+                        </select>
+                        <select id="model-dropdown"></select>
+                        <select id="target-column-dropdown"></select>
+                        <button id="train-model">Train Model</button>
+                        <div id="train-output"></div>
+                    </div>
+                </div>
+                <div id="visualize" class="page">
+                    <div class="card">
+                        <h2><i class="fas fa-chart-bar"></i> Visualize</h2>
+                        <p>Select a plot type and columns to generate a visualization.</p>
+                        <select id="plot-type">
+                            <option value="">Select Plot Type</option>
+                        </select>
+                        <label for="plot-col1">Column 1 (Numeric for Box Plot)</label>
+                        <select id="plot-col1"></select>
+                        <label for="plot-col2">Column 2 (Categorical for Box Plot)</label>
+                        <select id="plot-col2"></select>
+                        <div id="scatter-color-container" style="display: none;">
+                            <label for="scatter-color">Color by (Optional)</label>
+                            <select id="scatter-color"></select>
+                        </div>
+                        <button id="generate-plot">Generate Plot</button>
+                        <div id="plot-output">
+                            <div class="loader"></div>
+                            <img id="plot-img" src="" alt="">
+                        </div>
+                        <div id="plot-error"></div>
+                        <pre><code id="plot-code"></code></pre>
+                    </div>
+                </div>
+                <div id="ask" class="page">
+                    <div class="card">
+                        <h2><i class="fas fa-question-circle"></i> Ask AI</h2>
+                        <p>Ask a question about your dataset in plain English.</p>
+                        <input type="text" id="ai-question" placeholder="e.g., 'What is the correlation between X and Y?'">
+                        <button id="ask-ai">Ask</button>
+                        <div id="ai-answer"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/main.js"></script>
+</body>
+</html>
